@@ -1,0 +1,41 @@
+GIT
+  remote: https://github.com/calendarium-romanum/czech_old_catholic_calendar.git
+  revision: f5f422c30040c3f2c82de1ec7c90ced900a9146d
+  specs:
+    czech_old_catholic_calendar (0.1.0)
+      calendarium-romanum (~> 0.8.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    calendarium-romanum (0.8.0)
+      i18n (~> 0.6)
+      roman-numerals (~> 0.3)
+      thor (~> 0.18)
+    concurrent-ruby (1.1.7)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
+    roman-numerals (0.3.0)
+    ruby2_keywords (0.0.2)
+    sinatra (2.1.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.1.0)
+      tilt (~> 2.0)
+    thor (0.20.3)
+    tilt (2.0.10)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  czech_old_catholic_calendar!
+  sinatra
+
+BUNDLED WITH
+   2.1.4

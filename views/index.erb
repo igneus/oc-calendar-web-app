@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title><%= calendar.year %>/<%= calendar.year + 1 %> kalendář Starokatolické církve v ČR</title>
+    <meta charset="utf-8">
+    <style>
+      body { font-size: 10pt; }
+      table { border-spacing: 0; border-collapse: collapse; }
+      td { border: 1px solid black; padding: 5px; }
+      .highlight { background-color: #eee; }
+    </style>
+  </head>
+  <body>
+    <h1><%= calendar.year %>/<%= calendar.year + 1%></h1>
+
+
+    <% month = nil %>
+    <table>
+      <% calendar.each do |day| %>
+      <% if day.date.month != month %>
+      <tr><td colspan="2">
+	<h2><%= month = day.date.month %></h2>
+      </td></tr>
+      <% end %>
+
+      <% day.celebrations.each_with_index do |celebration, i| %>
+      <tr class="<%= day.celebrations.size == 1 && !(day.celebrations.first.ferial? || day.celebrations.first.sunday?) ? 'highlight' : '' %>">
+	<% if i == 0 %>
+	<td rowspan="<%= day.celebrations.size %>"><%= day.date.strftime('%A<br>%e. %-m.') %></td>
+	<% end %>
+	<td>
+	  <%= celebration.title %>
+	  <% if !(celebration.sunday? || celebration.ferial?) %>
+	  , <em><%= celebration.rank.short_desc %></em>
+	  <% end %>
+	</td>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+
+    <p style="font-size: 80%; margin-top: 40px;">
+      Vygenerováno pomocí <a href="https://github.com/calendarium-romanum/czech_old_catholic_calendar">https://github.com/calendarium-romanum/czech_old_catholic_calendar</a>
+    </p>
+  </body>
+</html>
